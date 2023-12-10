@@ -54,4 +54,6 @@ aunt(X, Y) :- sister(X, Z), parent(Z, Y).
 
 uncle(X, Y) :- brother(X, Z), parent(Z, Y).
 
-all_uncles(X, Uncles) :- findall(Uncle, uncle(Uncle, X), Uncles).
+all_uncles(X, Uncles) :- 
+    findall(Uncle, uncle(Uncle, X), DuplicatedUncles),
+    list_to_set(DuplicatedUncles, Uncles).
